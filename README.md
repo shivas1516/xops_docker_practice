@@ -6,7 +6,7 @@ This project uses Multi-Stage Docker Containerization to reduce the final image 
 
 ## Get the Image from Docker Hub
 ``` bash
-docker pull shiva1415/spring-app-multi-stage:latest
+docker push shiva1415/docker-practice:latest
 ```
 
 ## Run the Container
@@ -58,4 +58,5 @@ curl http://localhost:9000/users/1
 ```bash
 curl http://localhost:9000/users/department/Engineering
 ```
+
 
