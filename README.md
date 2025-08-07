@@ -1,8 +1,11 @@
 # Containerized Spring Boot Application
-This is a simple containerized Spring Boot application using multi-stage Docker builds and Maven.
+This is a simple, containerized Spring Boot application. This project uses Multi-Stage Docker Containerization to reduce the final image size and improve build efficiency.
 
 ## Approch
-This project uses Multi-Stage Docker Containerization to reduce the final image size and improve build efficiency.
+<div align="center">
+  <img width="1419" height="113" alt="Questa immagine mostra la differenza tra build a singolo stadio e build a più stadi in termini di dimensione dell'immagine" src="https://github.com/user-attachments/assets/56e5f867-f726-4e78-b8f4-a7c9f69662ae" />
+  <p><em>This shows the difference between single-stage build and multi-stage build impact on image size.</em></p>
+</div>
 
 ## Get the Image from Docker Hub
 ``` bash
@@ -58,5 +61,6 @@ curl http://localhost:9000/users/1
 ```bash
 curl http://localhost:9000/users/department/Engineering
 ```
+
 
 
