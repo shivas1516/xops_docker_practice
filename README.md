@@ -1,4 +1,4 @@
-#  Containerized Spring Boot Application
+# Containerized Spring Boot Application
 This is a simple, containerized Spring Boot application. This project uses Multi-Stage Docker Containerization to reduce the final image size and improve build efficiency.
 
 ## Approch
