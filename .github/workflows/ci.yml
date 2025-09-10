@@ -18,7 +18,7 @@ jobs:
 
       - name: Build & Push Docker Image
         run: |
-          IMAGE=mydockerhubuser/myapp
+          IMAGE=shiva1415/docker-practice
           TAG=$(date +%Y%m%d%H%M%S)  # unique tag per build
           docker build -t $IMAGE:$TAG .
           docker push $IMAGE:$TAG
