@@ -1,0 +1,47 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout App Repo
+        uses: actions/checkout@v3
+
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+      - name: Build & Push Docker Image
+        run: |
+          IMAGE=mydockerhubuser/myapp
+          TAG=$(date +%Y%m%d%H%M%S)  # unique tag per build
+          docker build -t $IMAGE:$TAG .
+          docker push $IMAGE:$TAG
+          echo "IMAGE=$IMAGE" >> $GITHUB_ENV
+          echo "TAG=$TAG" >> $GITHUB_ENV
+
+      - name: Checkout Infra Repo
+        uses: actions/checkout@v3
+        with:
+          repository: shivas1516/xops_argo_cd_practice
+          token: ${{ secrets.PAT_TOKEN }}
+          path: infra-repo
+
+      - name: Update Deployment Manifest
+        run: |
+          cd infra-repo/k8s
+          sed -i "s#image: .*#image: $IMAGE:$TAG#g" deployment.yaml
+
+      - name: Commit & Push Changes
+        run: |
+          cd infra-repo
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add .
+          git commit -m "Update image to $IMAGE:$TAG"
+          git push
