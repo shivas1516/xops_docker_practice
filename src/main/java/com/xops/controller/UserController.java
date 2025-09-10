@@ -19,7 +19,7 @@ public class UserController {
     
     @GetMapping()
     public ResponseEntity<String> hello() {
-        return ResponseEntity.ok("Hello from XOps!");
+        return ResponseEntity.ok("Hello from XOps! After auto sync by Agro CD");
     }
     
     // API 2: Get all users
@@ -83,4 +83,5 @@ public class UserController {
         long count = userService.getUserCount();
         return ResponseEntity.ok(count);
     }
+
 } 
