@@ -34,7 +34,7 @@ jobs:
 
       - name: Update Deployment Manifest
         run: |
-          cd infra-repo/k8s
+          cd xops_argo_cd_practice
           sed -i "s#image: .*#image: $IMAGE:$TAG#g" deployment.yaml
 
       - name: Commit & Push Changes
