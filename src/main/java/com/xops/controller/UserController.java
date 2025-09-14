@@ -17,9 +17,19 @@ public class UserController {
     @Autowired
     private UserService userService;
     
+    @Value("${SPRING_DATASOURCE_USERNAME}")
+    private String username;
+
+    @Value("${SPRING_DATASOURCE_PASSWORD}")
+    private String password;
+
     @GetMapping()
     public ResponseEntity<String> hello() {
-        return ResponseEntity.ok("Hello from XOps! After auto sync by Agro CD");
+        return ResponseEntity.ok(
+            "Hello from XOps! After auto sync by Argo CD\n" +
+            "Username: " + username + "\n" +
+            "Password: " + password
+        );
     }
     
     // API 2: Get all users
@@ -85,3 +95,4 @@ public class UserController {
     }
 
 } 
+
