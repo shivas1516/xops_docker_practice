@@ -2,6 +2,7 @@ package com.xops.controller;
 
 import com.xops.entity.User;
 import com.xops.service.UserService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -95,4 +96,5 @@ public class UserController {
     }
 
 } 
+
 
